@@ -11,7 +11,9 @@ import Foundation
 class CalculatorBrain{
     
     private var accumulator: Double = 0.0
+    
     private var descriptionAccumulator = "0"
+    
     var result: Double{ get{ return accumulator } }
     
     var isPartialResult: Bool = false
