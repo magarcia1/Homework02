@@ -79,5 +79,22 @@ class ViewController: UIViewController {
         brain.clear()
         displayValue = nil
     }
+    
+    @IBAction func setValueOfVariable() {
+        userIsInTheMiddleOfTyping = false
+        brain.variableValues["M"] = displayValue!
+        displayValue = brain.result
+    }
+
+    @IBAction func setVariable(_ sender: UIButton) {
+        let variable = sender.currentTitle!
+        brain.setOperand(variableName: variable)
+        brain.variableValues[variable] = 0.0
+        displayValue = brain.result
+        
+        print("\(brain.variableValues["M"]!)")
+
+    }
 }
+
 

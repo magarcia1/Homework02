@@ -16,6 +16,8 @@ class CalculatorBrain{
     
     var isPartialResult: Bool = false
     
+    var variableValues = [String: Double]()
+    
     var description: String{
         get{
             if pending == nil{
@@ -104,10 +106,10 @@ class CalculatorBrain{
         internalProgram.append(operand as AnyObject)
     }
     
-    var variableValues: Dictionary<String, Double> = [:]
-    
-    func setOperator(operand: String){
-        variableValues[operand] = 0.0
+    func setOperand(variableName: String){
+        accumulator = variableValues[variableName] ?? 0
+        descriptionAccumulator = variableName
+        internalProgram.append(accumulator as AnyObject)
     }
     
     typealias PropertyList = AnyObject
@@ -125,6 +127,12 @@ class CalculatorBrain{
                     }
                     else if let operand = op as? String {
                         performOperation(symbol: operand)
+                        if operations[operand] != nil {
+                            performOperation(symbol: operand)
+                        }
+                        else{
+                            setOperand(variableName: operand)
+                        }
                     }
                 }
             }
@@ -133,7 +141,9 @@ class CalculatorBrain{
     
     func clear(){
         accumulator = 0.0
+        descriptionAccumulator = "0"
         pending = nil
+        variableValues.removeAll()
         internalProgram.removeAll()
     }
 }
