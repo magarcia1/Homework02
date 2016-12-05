@@ -65,8 +65,6 @@ class CalculatorBrain{
     
     private var pending: PendingBinaryOperationInfo?    //2
     
-    // Intended to be Double if it is an operand
-    // String if it is an operations
     private var internalProgram = [AnyObject]()
     
     func performOperation(symbol: String){
@@ -144,7 +142,7 @@ class CalculatorBrain{
         accumulator = 0.0
         descriptionAccumulator = "0"
         pending = nil
-        variableValues.removeValue(forKey: "M")
+        //variableValues.removeValue(forKey: "M")
         internalProgram.removeAll()
     }
 }
