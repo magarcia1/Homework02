@@ -109,7 +109,7 @@ class CalculatorBrain{
     func setOperand(variableName: String){
         accumulator = variableValues[variableName] ?? 0
         descriptionAccumulator = variableName
-        internalProgram.append(accumulator as AnyObject)
+        internalProgram.append(variableName as AnyObject)
     }
     
     typealias PropertyList = AnyObject
@@ -126,7 +126,6 @@ class CalculatorBrain{
                         setOperand(operand: operand)
                     }
                     else if let operand = op as? String {
-                        performOperation(symbol: operand)
                         if operations[operand] != nil {
                             performOperation(symbol: operand)
                         }
@@ -143,7 +142,7 @@ class CalculatorBrain{
         accumulator = 0.0
         descriptionAccumulator = "0"
         pending = nil
-        variableValues.removeAll()
+ //       variableValues.removeAll()
         internalProgram.removeAll()
     }
 }

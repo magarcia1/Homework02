@@ -89,11 +89,8 @@ class ViewController: UIViewController {
     @IBAction func setVariable(_ sender: UIButton) {
         let variable = sender.currentTitle!
         brain.setOperand(variableName: variable)
-        brain.variableValues[variable] = 0.0
+        brain.variableValues[variable] = 0.0 //not necesary
         displayValue = brain.result
-        
-        print("\(brain.variableValues["M"]!)")
-
     }
 }
 
