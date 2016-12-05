@@ -83,6 +83,8 @@ class ViewController: UIViewController {
     @IBAction func setValueOfVariable() {
         userIsInTheMiddleOfTyping = false
         brain.variableValues["M"] = displayValue!
+        saveProgram = brain.program
+        brain.program = saveProgram!
         displayValue = brain.result
     }
 

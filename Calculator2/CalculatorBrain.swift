@@ -142,7 +142,7 @@ class CalculatorBrain{
         accumulator = 0.0
         descriptionAccumulator = "0"
         pending = nil
- //       variableValues.removeAll()
+        variableValues.removeValue(forKey: "M")
         internalProgram.removeAll()
     }
 }
