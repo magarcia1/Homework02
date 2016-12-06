@@ -12,6 +12,8 @@ class CalculatorBrain{
     
     private var accumulator: Double = 0.0
     
+    private var theValueOnHold = 0.0
+    
     private var descriptionAccumulator = "0"
     
     var result: Double{ get{ return accumulator } }
@@ -119,6 +121,14 @@ class CalculatorBrain{
         internalProgram.append(variableName as AnyObject)
     }
     
+    func setOperand(_ variableName: String, to variableNameValue: Double){
+        variableValues[variableName] = variableNameValue
+        accumulator = variableValues[variableName] ?? 0
+        descriptionAccumulator = variableName
+        internalProgram.append(variableName as AnyObject)
+        
+    }
+    
     typealias PropertyList = AnyObject
     
     var program: PropertyList{
@@ -137,7 +147,7 @@ class CalculatorBrain{
                             performOperation(symbol: operand)
                         }
                         else{
-                            setOperand(variableName: operand)
+                            setOperand(operand, to: theValueOnHold)
                         }
                     }
                 }
@@ -149,7 +159,10 @@ class CalculatorBrain{
         accumulator = 0.0
         descriptionAccumulator = "0"
         pending = nil
-        //variableValues.removeValue(forKey: "M")
+        if let valueOnHold = variableValues.removeValue(forKey:
+            "M"){
+            theValueOnHold = valueOnHold
+        }
         internalProgram.removeAll()
     }
 }
