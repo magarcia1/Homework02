@@ -67,6 +67,12 @@ class CalculatorBrain{
     
     private var internalProgram = [AnyObject]()
     
+    func removeProgramComputation() {
+        if !internalProgram.isEmpty{
+            internalProgram.removeLast()
+        }
+    }
+    
     func performOperation(symbol: String){
         internalProgram.append(symbol as AnyObject)
         if let operation = operations[symbol]{

@@ -87,11 +87,31 @@ class ViewController: UIViewController {
         brain.program = saveProgram!
         displayValue = brain.result
     }
-
+    
     @IBAction func setVariable(_ sender: UIButton) {
         let variable = sender.currentTitle!
         brain.setOperand(variableName: variable)
         displayValue = brain.result
+    }
+    
+    @IBAction func Undo() {
+        if userIsInTheMiddleOfTyping {
+            var textCurrentlyInDisplay = display.text!
+            textCurrentlyInDisplay.remove(at:
+                textCurrentlyInDisplay.index(before:
+                    textCurrentlyInDisplay.endIndex))
+            display.text = textCurrentlyInDisplay
+            if textCurrentlyInDisplay.isEmpty {
+                userIsInTheMiddleOfTyping = false
+            }
+        }
+        else {
+            brain.removeProgramComputation()
+            saveProgram = brain.program
+            brain.program = saveProgram!
+            displayValue = brain.result
+            
+        }
     }
 }
 
