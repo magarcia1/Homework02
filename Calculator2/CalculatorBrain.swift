@@ -46,13 +46,14 @@ class CalculatorBrain{
         "cos" : .UnaryOperation(cos, { "cos(" + $0 + ")" }),
         "sin" : .UnaryOperation(sin, { "sin(" + $0 + ")" }),
         "tan" : .UnaryOperation(tan, { "tan(" + $0 + ")" }),
-        "log" : .UnaryOperation(log, { "log(" + $0 + ")" }),
+        "ln" : .UnaryOperation(log, { "log(" + $0 + ")" }),
         "x²": .UnaryOperation({$0 * $0}, { "(" + $0 + ")²" }),
         "x⁻¹": .UnaryOperation({1/$0}, { "(" + $0 + ")⁻¹" }),
         "+" : .BinaryOperation({$0 + $1}, { $0 + " + " + $1 }),
         "−" : .BinaryOperation({$0 - $1}, { $0 + " - " + $1 }),
         "×" : .BinaryOperation({$0 * $1}, { $0 + " × " + $1 }),
         "÷" : .BinaryOperation({$0 / $1}, { $0 + " ÷ " + $1 }),
+        "%" : .BinaryOperation({$0.truncatingRemainder(dividingBy: $1)}, { $0 + " % " + $1 }),
         "=" : .Equals
     ]
     
