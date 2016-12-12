@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CalculatorViewController: UIViewController {
     
     private var brain: CalculatorBrain = CalculatorBrain()
     private var userIsInTheMiddleOfTyping: Bool = false
@@ -16,6 +16,16 @@ class ViewController: UIViewController {
     @IBOutlet private weak var display: UILabel!
     @IBOutlet weak var displayDescription: UILabel!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     @IBAction private func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle! //1
         if (userIsInTheMiddleOfTyping && digit != ".") ||
@@ -35,12 +45,18 @@ class ViewController: UIViewController {
     private var displayValue : Double? {
         get {
             //! optional: we have to account for every string passed
-            return Double(display.text!)!
+            //return Double(display.text!)!
+            if let text = display.text {
+                return NumberFormatter().number(from: text)?.doubleValue
+            }
+            return nil
         }
         set {
             if let value = newValue {
-                display.text = String(value)
-                //display Description Needed in here:.....
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .decimal
+                formatter.maximumFractionDigits = 6
+                display.text = formatter.string(from: NSNumber(value: value))
                 displayDescription.text = brain.description + (brain.isPartialResult ? " ..." : " =")
             } else {
                 display.text = "0"
@@ -62,7 +78,7 @@ class ViewController: UIViewController {
     }
     
     var saveProgram: CalculatorBrain.PropertyList?
-    
+    /*
     @IBAction func save() {
         saveProgram = brain.program
     }
@@ -72,7 +88,7 @@ class ViewController: UIViewController {
             brain.program = saveProgram!
             displayValue = brain.result
         }
-    }
+    }*/
     
     @IBAction func clearButton() {
         userIsInTheMiddleOfTyping = false

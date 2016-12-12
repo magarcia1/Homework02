@@ -37,12 +37,14 @@ class CalculatorBrain{
         case Constant(Double)
         case UnaryOperation((Double) -> Double, (String) -> String)
         case BinaryOperation((Double, Double) -> Double, (String, String) -> String)
+        case nullaryOperation(() -> Double, () -> String)
         case Equals
     }
     
     private var operations: Dictionary<String,Operation> = [
         "π" : .Constant(M_PI),
         "e" : .Constant(M_E),
+        "Rand": .nullaryOperation({drand48()}, { "rand" }),
         "±" : .UnaryOperation({ -$0}, { "-(" + $0 + ")" }),
         "√" : .UnaryOperation(sqrt, {"²√(" + $0 + ")"}),
         "cos" : .UnaryOperation(cos, { "cos(" + $0 + ")" }),
@@ -86,6 +88,9 @@ class CalculatorBrain{
             case .UnaryOperation(let function, let descriptionFunction):
                 accumulator = function(accumulator)
                 descriptionAccumulator = descriptionFunction(descriptionAccumulator)
+            case .nullaryOperation(let function, let descriptionValue):
+                accumulator = function()
+                descriptionAccumulator = descriptionValue()
             case .BinaryOperation(let function, let descriptionFunction):
                 isPartialResult = true
                 executePendingbinaryOperation()
@@ -111,7 +116,7 @@ class CalculatorBrain{
     
     func setOperand(operand: Double){
         accumulator = operand
-        descriptionAccumulator = String(operand)
+        descriptionAccumulator = String(format:"%g", operand)
         internalProgram.append(operand as AnyObject)
     }
     
