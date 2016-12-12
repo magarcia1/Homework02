@@ -10,8 +10,30 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     
+    @IBOutlet weak var button1: UIButton!
+    @IBOutlet weak var button2: UIButton!
+    @IBOutlet weak var button3: UIButton!
+    @IBOutlet weak var button4: UIButton!
+    @IBOutlet weak var button5: UIButton!
+    @IBOutlet weak var button6: UIButton!
+    @IBOutlet weak var button7: UIButton!
+    @IBOutlet weak var button8: UIButton!
+    @IBOutlet weak var button9: UIButton!
+    @IBOutlet weak var button10: UIButton!
+    @IBOutlet weak var button11: UIButton!
+    @IBOutlet weak var button12: UIButton!
+    @IBOutlet weak var button13: UIButton!
+    @IBOutlet weak var button14: UIButton!
+    @IBOutlet weak var button15: UIButton!
+    @IBOutlet weak var button16: UIButton!
+    @IBOutlet weak var button17: UIButton!
+    @IBOutlet weak var button18: UIButton!
+    @IBOutlet weak var button19: UIButton!
+    @IBOutlet weak var button20: UIButton!
+
     private var brain: CalculatorBrain = CalculatorBrain()
     private var userIsInTheMiddleOfTyping: Bool = false
+    
     
     @IBOutlet private weak var display: UILabel!
     @IBOutlet weak var displayDescription: UILabel!
@@ -19,11 +41,40 @@ class CalculatorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        NotificationCenter.default.addObserver(self, selector: #selector(CalculatorViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func rotated()
+    {
+        if(UIDeviceOrientationIsLandscape(UIDevice.current.orientation))
+        {
+            button1.isHidden = false; button2.isHidden = false;
+            button3.isHidden = false; button4.isHidden = false;
+            button5.isHidden = false; button6.isHidden = false;
+            button7.isHidden = false; button8.isHidden = false;
+            button9.isHidden = false; button10.isHidden = false;
+            button11.isHidden = false; button12.isHidden = false;
+            button13.isHidden = false; button14.isHidden = false;
+            button15.isHidden = false; button16.isHidden = false;
+            button17.isHidden = false; button18.isHidden = false;
+            button19.isHidden = false; button20.isHidden = false;
+        }
+        
+        if(UIDeviceOrientationIsPortrait(UIDevice.current.orientation))
+        {
+            print("Portrait")
+            button1.isHidden = true; button2.isHidden = true;
+            button3.isHidden = true; button4.isHidden = true;
+            button5.isHidden = true; button6.isHidden = true;
+            button7.isHidden = true; button8.isHidden = true;
+            button9.isHidden = true; button10.isHidden = true;
+            button11.isHidden = true; button12.isHidden = true;
+            button13.isHidden = true; button14.isHidden = true;
+            button15.isHidden = true; button16.isHidden = true;
+            button17.isHidden = true; button18.isHidden = true;
+            button19.isHidden = true; button20.isHidden = true;
+        }
+        
     }
 
     @IBAction private func touchDigit(_ sender: UIButton) {

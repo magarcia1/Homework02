@@ -140,14 +140,6 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <variation key="default">
-                                                    <mask key="subviews">
-                                                        <exclude reference="XPG-Qg-It0"/>
-                                                        <exclude reference="b3N-kj-H0g"/>
-                                                        <exclude reference="8ab-qU-WxD"/>
-                                                        <exclude reference="8bC-k9-wbq"/>
-                                                    </mask>
-                                                </variation>
                                                 <variation key="heightClass=compact">
                                                     <mask key="subviews">
                                                         <include reference="XPG-Qg-It0"/>
@@ -254,14 +246,6 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <variation key="default">
-                                                    <mask key="subviews">
-                                                        <exclude reference="kZS-0a-34F"/>
-                                                        <exclude reference="TDI-te-kdG"/>
-                                                        <exclude reference="6vk-35-GCI"/>
-                                                        <exclude reference="8E9-g5-ZwM"/>
-                                                    </mask>
-                                                </variation>
                                                 <variation key="heightClass=compact">
                                                     <mask key="subviews">
                                                         <include reference="kZS-0a-34F"/>
@@ -368,14 +352,6 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <variation key="default">
-                                                    <mask key="subviews">
-                                                        <exclude reference="5oA-Jv-YMr"/>
-                                                        <exclude reference="2Rt-sx-BdF"/>
-                                                        <exclude reference="0VY-AW-Kj1"/>
-                                                        <exclude reference="w3Z-5Q-Nbo"/>
-                                                    </mask>
-                                                </variation>
                                                 <variation key="heightClass=compact">
                                                     <mask key="subviews">
                                                         <include reference="5oA-Jv-YMr"/>
@@ -482,14 +458,6 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <variation key="default">
-                                                    <mask key="subviews">
-                                                        <exclude reference="1uE-ct-oiD"/>
-                                                        <exclude reference="niy-zm-nuC"/>
-                                                        <exclude reference="RMg-6y-LTm"/>
-                                                        <exclude reference="YMf-WI-8YD"/>
-                                                    </mask>
-                                                </variation>
                                                 <variation key="heightClass=compact">
                                                     <mask key="subviews">
                                                         <include reference="1uE-ct-oiD"/>
@@ -596,14 +564,6 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <variation key="default">
-                                                    <mask key="subviews">
-                                                        <exclude reference="yNq-rs-dth"/>
-                                                        <exclude reference="wuB-c9-LbT"/>
-                                                        <exclude reference="XxT-D2-ely"/>
-                                                        <exclude reference="Cbk-6P-3Jj"/>
-                                                    </mask>
-                                                </variation>
                                                 <variation key="heightClass=compact">
                                                     <mask key="subviews">
                                                         <include reference="yNq-rs-dth"/>
@@ -628,6 +588,26 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="button1" destination="8bC-k9-wbq" id="4mo-re-4XR"/>
+                        <outlet property="button10" destination="XxT-D2-ely" id="Mrg-we-m0j"/>
+                        <outlet property="button11" destination="b3N-kj-H0g" id="Hdi-8N-b0l"/>
+                        <outlet property="button12" destination="TDI-te-kdG" id="UvQ-uq-Dq4"/>
+                        <outlet property="button13" destination="2Rt-sx-BdF" id="hav-2H-XDC"/>
+                        <outlet property="button14" destination="niy-zm-nuC" id="sbC-RO-3RG"/>
+                        <outlet property="button15" destination="wuB-c9-LbT" id="x31-n0-buB"/>
+                        <outlet property="button16" destination="XPG-Qg-It0" id="Slu-FU-8Sj"/>
+                        <outlet property="button17" destination="kZS-0a-34F" id="ZVj-wX-wJc"/>
+                        <outlet property="button18" destination="5oA-Jv-YMr" id="OTU-jF-L26"/>
+                        <outlet property="button19" destination="1uE-ct-oiD" id="2Yx-sZ-jie"/>
+                        <outlet property="button2" destination="8E9-g5-ZwM" id="vgH-sA-CNi"/>
+                        <outlet property="button20" destination="yNq-rs-dth" id="cuw-iB-sEK"/>
+                        <outlet property="button3" destination="w3Z-5Q-Nbo" id="kuY-JA-uNG"/>
+                        <outlet property="button4" destination="YMf-WI-8YD" id="kdp-Gt-wVW"/>
+                        <outlet property="button5" destination="Cbk-6P-3Jj" id="KRF-Q4-iXX"/>
+                        <outlet property="button6" destination="8ab-qU-WxD" id="I1j-ox-IUP"/>
+                        <outlet property="button7" destination="6vk-35-GCI" id="fh7-PH-zYL"/>
+                        <outlet property="button8" destination="0VY-AW-Kj1" id="ffy-AH-qnz"/>
+                        <outlet property="button9" destination="RMg-6y-LTm" id="GrI-XZ-O09"/>
                         <outlet property="display" destination="MtU-LB-rpW" id="h4z-OM-Rz9"/>
                         <outlet property="displayDescription" destination="hra-TO-hFW" id="1Cd-P8-k2z"/>
                     </connections>
