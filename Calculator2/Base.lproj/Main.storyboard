@@ -59,6 +59,9 @@
                                                         <state key="normal" title="mc">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="clearButton" destination="bKk-FE-nH6" eventType="touchUpInside" id="JRY-Um-bYD"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3N-kj-H0g">
                                                         <rect key="frame" x="83.5" y="0.0" width="82.5" height="48.5"/>
@@ -68,7 +71,6 @@
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="performOperation:" destination="bKk-FE-nH6" eventType="touchUpInside" id="HR4-Z7-RT0"/>
                                                             <action selector="setValueOfVariable" destination="bKk-FE-nH6" eventType="touchUpInside" id="SbV-bL-htS"/>
                                                         </connections>
                                                     </button>

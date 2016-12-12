@@ -138,7 +138,6 @@ class CalculatorBrain{
         accumulator = variableValues[variableName] ?? 0
         descriptionAccumulator = variableName
         internalProgram.append(variableName as AnyObject)
-        
     }
     
     typealias PropertyList = AnyObject
@@ -172,7 +171,7 @@ class CalculatorBrain{
         descriptionAccumulator = "0"
         pending = nil
         if let valueOnHold = variableValues.removeValue(forKey:
-            "M"){
+            "m"){
             theValueOnHold = valueOnHold
         }
         internalProgram.removeAll()

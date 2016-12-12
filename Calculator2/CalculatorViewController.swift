@@ -30,14 +30,13 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var button18: UIButton!
     @IBOutlet weak var button19: UIButton!
     @IBOutlet weak var button20: UIButton!
-
-    private var brain: CalculatorBrain = CalculatorBrain()
-    private var userIsInTheMiddleOfTyping: Bool = false
-    
     
     @IBOutlet private weak var display: UILabel!
     @IBOutlet weak var displayDescription: UILabel!
     
+    private var brain: CalculatorBrain = CalculatorBrain()
+    private var userIsInTheMiddleOfTyping: Bool = false
+    private var previousOp = "?"
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -62,7 +61,6 @@ class CalculatorViewController: UIViewController {
         
         if(UIDeviceOrientationIsPortrait(UIDevice.current.orientation))
         {
-            print("Portrait")
             button1.isHidden = true; button2.isHidden = true;
             button3.isHidden = true; button4.isHidden = true;
             button5.isHidden = true; button6.isHidden = true;
@@ -74,9 +72,8 @@ class CalculatorViewController: UIViewController {
             button17.isHidden = true; button18.isHidden = true;
             button19.isHidden = true; button20.isHidden = true;
         }
-        
     }
-
+    
     @IBAction private func touchDigit(_ sender: UIButton) {
         let digit = sender.currentTitle! //1
         if (userIsInTheMiddleOfTyping && digit != ".") ||
@@ -90,12 +87,12 @@ class CalculatorViewController: UIViewController {
                 display.text = digit
             }
         }
+        previousOp = "?"
         userIsInTheMiddleOfTyping = true
     }
     
     private var displayValue : Double? {
         get {
-            //! optional: we have to account for every string passed
             //return Double(display.text!)!
             if let text = display.text {
                 return NumberFormatter().number(from: text)?.doubleValue
@@ -118,28 +115,23 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction private func performOperation(_ sender: UIButton){
-        if userIsInTheMiddleOfTyping {
-            brain.setOperand(operand: displayValue!)
-            userIsInTheMiddleOfTyping = false
+        if ( (previousOp != "+") && (previousOp != "-") &&
+            (previousOp != "×") && (previousOp != "÷") &&
+            (previousOp != "xⁿ") && (previousOp != "%")){
+            if userIsInTheMiddleOfTyping {
+                brain.setOperand(operand: displayValue!)
+                userIsInTheMiddleOfTyping = false
+            }
+            if let matematicalSymbol = sender.currentTitle {
+                brain.performOperation(symbol: matematicalSymbol)
+                previousOp = matematicalSymbol
+
+            }
+            displayValue = brain.result
         }
-        if let matematicalSymbol = sender.currentTitle {
-            brain.performOperation(symbol: matematicalSymbol)
-        }
-        displayValue = brain.result
     }
     
     var saveProgram: CalculatorBrain.PropertyList?
-    /*
-    @IBAction func save() {
-        saveProgram = brain.program
-    }
-    
-    @IBAction func restore() {
-        if saveProgram != nil {
-            brain.program = saveProgram!
-            displayValue = brain.result
-        }
-    }*/
     
     @IBAction func clearButton() {
         userIsInTheMiddleOfTyping = false
@@ -149,7 +141,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func setValueOfVariable() {
         userIsInTheMiddleOfTyping = false
-        brain.variableValues["M"] = displayValue!
+        brain.variableValues["m"] = displayValue!
         saveProgram = brain.program
         brain.program = saveProgram!
         displayValue = brain.result
@@ -157,6 +149,7 @@ class CalculatorViewController: UIViewController {
     
     @IBAction func setVariable(_ sender: UIButton) {
         let variable = sender.currentTitle!
+        previousOp = "m"
         brain.setOperand(variableName: variable)
         displayValue = brain.result
     }
@@ -181,5 +174,3 @@ class CalculatorViewController: UIViewController {
         }
     }
 }
-
-
